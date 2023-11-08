@@ -1,0 +1,29 @@
+package hj.securityproject.member.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import hj.securityproject.member.repository.MemberRepository;
+
+
+@Service
+public class MemberService {
+
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public MemberService(MemberRepository memberRepository) {
+		super();
+		this.memberRepository = memberRepository;
+	}
+	
+
+	public String signUp(멤버타입) {
+		//ID 중복 검사
+		
+		// Member 객체 생성 
+	}
+}
+
+
+

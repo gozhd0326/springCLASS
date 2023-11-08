@@ -1,0 +1,73 @@
+package com.hj.jdbcproject.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hj.jdbcproject.model.Member;
+import com.hj.jdbcproject.repository.MemberRepository;
+import com.hj.jdbcproject.service.MemberService;
+
+@Service //bean 만드는 annotation
+public class MemberServiceImpl implements MemberService{
+
+	private MemberRepository meberRepository;
+	
+	@Autowired
+	public MemberServiceImpl(MemberRepository meberRepository) {
+		super();
+		this.meberRepository = meberRepository;
+	}
+
+	@Override //controller가 사용 Repository를 부름
+	public Member saveMember(Member member) {
+		// TODO Auto-generated method stub
+		return MemberRepository.save(member);
+	}
+
+	@Override
+	public Member getMemberById(long id) {
+		// TODO Auto-generated method stub
+		return meberRepository.findById(id).orElseThrow(()->null);
+	}
+
+	@Override
+	public Member getMemberByName(String name) {
+		// TODO Auto-generated method stub
+		return memberRepository.findByName(name).orElseThrow(()->null);
+	}
+
+	@Override
+	public List<Member> getAllMembers() {
+		// TODO Auto-generated method stub
+		return memberRepository.findAll();
+	}
+
+	@Override
+	public Member save(Member member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<Member> findById(Long id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<Member> findByName(String name) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public List<Member> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

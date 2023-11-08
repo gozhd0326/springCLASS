@@ -1,0 +1,5 @@
+package hj.securityproject.member.dto;
+
+public class LoginDto {
+
+}

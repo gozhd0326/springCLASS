@@ -1,0 +1,56 @@
+package hj.securityproject.member.controller;
+
+//member에는 기본 mvc + dto
+//controller는 받은 데이터를 서버에게 주는 것이 중요. restAPI 관리, 최대한 간단하게 코드작성
+import org.springframework.http.HttpStatus;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import hj.securityproject.common.dto.BaseResponse;
+import hj.securityproject.common.status.ResultCode;
+import hj.securityproject.member.dto.LoginDto;
+import hj.securityproject.member.dto.MemberDto;
+import hj.securityproject.member.service.MemberService;
+import jakarta.validation.Valid;
+
+@CrossOrigin(origins="http://localhost:3000",methods= {RequestMethod.GET,RequestMethod.POST})
+@RestController
+@RequestMapping("/api/member")
+public class MemberController {
+
+	//강한 결합은 바람직하지 않음(의존성 주입이나 스프링에서는 그닥)
+	private MemberService memberService;
+
+	public MemberController(MemberService memberService) {
+		super();
+		this.memberService = memberService;
+	}
+	
+	
+	//restAPI는 개방성이 있어 모든 것을 다 받아들이기 때문에 보안을 위해 valid를 사용한다.
+	@PostMapping("signup")//@Valid가 있는 이유는 더 밑으로 가지 않고 여기서 validation이 실행되기 때문에 여기서 exception처리를 할 수 있기 때문이다.(service쪽까지 않가도 됨)
+	public ResponseEntity<BaseResponse<Void>> signUp(@RequestBody @Valid MemberDto memberDto){ //void = 여기에 넣을게 없어 라는 뜻!
+		return new ResponseEntity<BaseResponse<Void>>(new BaseResponse<Void>(ResultCode.SUCCESS.name(),
+				null,
+				memberService.signUp(memberDto)),
+				HttpStatus.CREATED);
+		//컨트롤러는 성공했을 때만 보냈기 때문에 성공여부를 모름.
+	}
+	
+	
+	@PostMapping("login")   
+	public ResponseEntity<BaseResponse<Void>> login(@RequestBody @Valid LoginDto loginDto){
+		return new ResponseEntity<BaseResponse<Void>>(new BaseResponse<Void>(ResultCode.SUCCESS.name(),
+				null,
+				memberService.logIn(loginDto)),
+				HttpStatus.CREATED);
+	}
+	//postmapping(login)어노테이션 하기
+	//login용 dto를 새로 만들고 받기
+}

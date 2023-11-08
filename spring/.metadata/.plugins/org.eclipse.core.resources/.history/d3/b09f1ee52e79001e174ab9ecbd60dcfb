@@ -1,0 +1,5 @@
+package hj.securityproject.common.status;
+
+public enum Gender {
+
+}

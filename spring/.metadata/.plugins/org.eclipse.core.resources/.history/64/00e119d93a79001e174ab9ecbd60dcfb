@@ -1,0 +1,5 @@
+package hj.securityproject.member.repository;
+
+public class MemberRepository {
+
+}

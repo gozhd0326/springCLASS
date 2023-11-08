@@ -1,0 +1,56 @@
+package hj.securityproject.common.exception;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import hj.securityproject.common.dto.BaseResponse;
+import hj.securityproject.common.status.ResultCode;
+
+//발생하는 예외사항(컨트롤러에서 예외사항이 많이 발생하지만 그곳에서만 발생하는 것이 아닌 전체에서 가능)
+//내가 지정해놓은 예외 사항을 다른 문구로 변경가능
+//ExceptionHandler의 역할을 대신 수행함.
+@ControllerAdvice 
+public class CustomExceptionHandler {
+
+	//ControllerAdvice를 사용할 경우 반드시 사용. 
+	//class는 이름 그 자체를 이용하기 위해 사용함.(여기서는 MethodArgumentNotValidException 이 애만 사용함) 
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseBody // 이 밑의 내용을 응답 바디에 넣어줘라.
+	protected ResponseEntity<BaseResponse<Map<String,String>>> //Map은 컨테이너,List와 비슷하지만(리스트는 일렬로 쭉 담고) Map은 key와 value로 담음
+	handleValidationExceptions(MethodArgumentNotValidException ex){
+		Map<String, String> errors = new HashMap<String, String>();
+		ex.getBindingResult().getAllErrors().forEach(error -> {
+			String fieldName = ((FieldError)error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage != null ? errorMessage //put(key,value !=null? (null이 아니면 errormessage를 보내라.)
+					: "Not Exception Message");
+			});
+		return ResponseEntity.badRequest().body(new BaseResponse<>( //badRequest => 400 eroor .body를 하면 body 안에 내용을 넣을 수 있고 BaseResopnse 형태로 넣을 수 있음.
+				ResultCode.ERROR.name(),
+				errors,
+				ResultCode.ERROR.getMsg()
+				)); //함수형 리턴. //이 애와
+	}
+	
+	@ExceptionHandler(InvalidInputException.class)
+    protected ResponseEntity<BaseResponse<Map<String, String>>>
+    invalidInputException(InvalidInputException ex) {
+        Map<String, String> errors = Map.of(ex.getFieldName(), (ex.getMessage() != null ? ex.getMessage() : "Not Exception Message"));
+        return new ResponseEntity<>(new BaseResponse<>(ResultCode.ERROR.name(), errors, ResultCode.ERROR.getMsg()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class) //위에 익셉션을 제외하고 모든 익셉션을 여기서 처리하겠다.
+    protected ResponseEntity<BaseResponse<Map<String, String>>>
+    defaultException(Exception ex) {
+        Map<String, String> errors = Map.of("미처리에러", (ex.getMessage() != null ? ex.getMessage() : "Not Exception Message"));
+        return new ResponseEntity<>(new BaseResponse<>(ResultCode.ERROR.name(), errors, ResultCode.ERROR.getMsg()), HttpStatus.BAD_REQUEST); //이 애는 같은 방식
+    }
+}

@@ -1,0 +1,5 @@
+package hj.securityproject.member.model;
+
+public class Member {
+
+}

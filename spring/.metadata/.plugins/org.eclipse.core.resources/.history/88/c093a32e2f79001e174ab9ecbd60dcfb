@@ -1,0 +1,27 @@
+package hj.securityproject.member.model;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+//대문자 Long은 class 이고 long은 원시타입임(가볍게 메소드에서 쓸 때), Long은 long을 관리하기 위해 만들어서 사용(Entity에서 사용)
+@Entity
+@Table(name = "member")
+public class Member {
+
+	private Long id;
+	
+	private String loginId;
+	
+	private String password;
+	
+	private String name;
+	
+	private LocalDate birthDate; //날짜를 입력받는 애
+	
+	Private Gender gender;
+	
+	private String email; 
+	
+}

@@ -1,0 +1,16 @@
+package com.hj.jdbcproject.repository;
+
+public interface MemberRepository {
+
+	//주석은 최대한 간단명료하게 한줄정도로 작성(명사 중심으로 작성)
+	
+	// 저장
+	Member save(Member member);
+	
+	// id로 row찾기
+	
+	// 이름으로 row찾기
+	
+	// 모든 row찾기
+
+}

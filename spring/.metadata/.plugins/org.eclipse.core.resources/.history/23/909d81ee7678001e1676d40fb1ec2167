@@ -1,0 +1,5 @@
+package com.hj.jdbcproject.service.impl;
+
+public class MemberServiceImpl {
+
+}

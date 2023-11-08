@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\admin\Documents\spring\gameShopBackEnd"/>
+			<item value="C:\Users\admin\Documents\spring\springsecurity"/>
+			<item value="C:\Users\admin\Documents\spring\securityproject"/>
+			<item value="C:\Users\admin\Documents\spring\jdbcproject"/>
+			<item value="C:\Users\admin\Documents\spring\firstpractice"/>
+			<item value="C:\Users\admin\Documents\spring\hj"/>
+			<item value="C:\Users\admin\Documents\spring\firstapp"/>
+			<item value="C:\Users\admin\Documents\spring\test"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

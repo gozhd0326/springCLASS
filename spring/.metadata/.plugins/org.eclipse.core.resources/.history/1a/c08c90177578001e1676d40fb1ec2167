@@ -1,0 +1,13 @@
+package com.hj.jdbcproject.repository;
+
+public interface MemberRepository {
+	
+	// 저장
+	
+	// id로 row찾기
+	
+	// 이름으로 row찾기
+	
+	// 모든 row찾기
+
+}

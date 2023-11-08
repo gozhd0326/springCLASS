@@ -1,0 +1,26 @@
+package com.hj.jdbcproject.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.hj.jdbcproject.model.Member;
+
+public interface MemberService {
+
+	Member saveMember(Member member);
+	
+	Member getMemberById(long id);
+	
+	Member getMemberByName(String name);
+	
+	List<Member> getAllMembers();
+	
+	// 저장
+	Member save(Member member);
+	// id로 row찾기
+	Optional<Member> findById(Long id);
+	// 이름으로 row찾기
+	Optional<Member> findByName(String name);
+	// 모든 row찾기
+	List<Member>findAll();
+}

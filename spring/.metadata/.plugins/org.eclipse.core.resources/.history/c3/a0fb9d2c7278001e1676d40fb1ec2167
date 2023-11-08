@@ -1,0 +1,5 @@
+package com.hj.jdbcproject.repository;
+
+public class MemberRepository {
+
+}

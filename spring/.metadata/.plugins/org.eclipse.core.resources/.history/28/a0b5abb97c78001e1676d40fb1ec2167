@@ -1,0 +1,20 @@
+package com.hj.jdbcproject.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hj.jdbcproject.service.MemberService;
+
+@RestController
+public class MemberController {
+
+	private MemberService memberService;
+
+	@Autowired
+	public MemberController(MemberService memberService) {
+		super();
+		this.memberService = memberService;
+	}
+	
+	
+}

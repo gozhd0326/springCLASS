@@ -1,0 +1,6 @@
+package hj.securityproject.common.exception;
+
+//RuntimeException은 프로그램이 실행하는 도중 발생하는 모든 Exception을 포함하고 있는 부모이다.
+public class InvalidInputException extends RuntimeException{
+
+}

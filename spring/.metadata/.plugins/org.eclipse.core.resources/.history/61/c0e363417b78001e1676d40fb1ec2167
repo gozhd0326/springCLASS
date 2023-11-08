@@ -1,0 +1,5 @@
+package com.hj.jdbcproject.controller;
+
+public class MemberController {
+
+}

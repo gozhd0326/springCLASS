@@ -1,0 +1,56 @@
+package hj.securityproject.member.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
+public class LoginDto {
+
+private Long id;
+	
+	@NotBlank
+	private String loginId; //아이디에 준하는 유니크한 키를 지정해야됨. 중복은 허용하지 않음!!
+	
+	@NotBlank
+	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,20}$",message = "영문 숫자 특수문자를 포함한 8~20자리로 입력해주세요")
+	private String password;
+
+	public LoginDto() {
+		super();
+	}
+
+	public LoginDto(Long id, @NotBlank String loginId,
+		@NotBlank 
+		@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,20}$", message = "영문 숫자 특수문자를 포함한 8~20자리로 입력해주세요") 
+	String password) {
+		super();
+		this.id = id;
+		this.loginId = loginId;
+		this.password = password;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+}

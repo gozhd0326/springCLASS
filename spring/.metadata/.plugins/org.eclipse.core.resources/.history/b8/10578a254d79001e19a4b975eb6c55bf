@@ -1,0 +1,12 @@
+package hj.securityproject.member.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import hj.securityproject.member.model.Member;
+
+public interface MemberRepository extends JpaRepository<Member,Long> {
+
+	Member findByLoginId(String loginId);
+	
+	
+}

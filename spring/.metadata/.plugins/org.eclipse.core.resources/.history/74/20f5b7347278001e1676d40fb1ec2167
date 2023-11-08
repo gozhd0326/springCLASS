@@ -1,0 +1,5 @@
+package com.hj.jdbcproject.service;
+
+public class MemberService {
+
+}

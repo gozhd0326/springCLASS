@@ -1,0 +1,5 @@
+package hj.securityproject.member.service;
+
+public class MemberService {
+
+}

@@ -1,0 +1,28 @@
+package hj.securityproject.member.dto;
+
+import java.time.LocalDate;
+
+import hj.securityproject.common.status.Gender;
+
+//정규식 표현(Regular Expression)은 문자열만 인식할 수 있음.
+//때문에 String형으로 바꿈
+//Entity와 다르기 때문에 따로 만들어야 됨.
+
+public class MemberDto {
+
+	private Long id;
+
+	private String loginId; //아이디에 준하는 유니크한 키를 지정해야됨. 중복은 허용하지 않음!!
+	
+	private String password;
+	
+	private String name;
+
+	private String birthDate; //날짜를 입력받는 애
+	
+
+	private String gender;
+	
+
+	private String email;
+}

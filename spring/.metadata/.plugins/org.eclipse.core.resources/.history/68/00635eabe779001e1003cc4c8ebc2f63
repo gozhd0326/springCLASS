@@ -1,0 +1,11 @@
+package hj.securityproject.common.exception;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+//발생하는 예외사항(컨트롤러에서 예외사항이 많이 발생하지만 그곳에서만 발생하는 것이 아닌 전체에서 가능)
+//내가 지정해놓은 예외 사항을 다른 문구로 변경가능
+//ExceptionHandler의 역할을 대신 수행함.
+@ControllerAdvice 
+public class CustomExceptionHandler {
+
+}
